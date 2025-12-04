@@ -1,120 +1,159 @@
-# 📚 Library Management System (Python – FOCP Project)
+📚 Library Management System (Python + SQLite)
 
-This is a simple **Library Management System** built using Python for the **Fundamentals of Computing & Programming (FOCP)** course.  
-The project runs in the terminal and uses a text file (`lib.txt`) to store book records.
+A fully functional Library Management System built using Python and SQLite with secure login, book management, and user-based borrow tracking.
+This project is designed for academic use, small libraries, and anyone learning database-backed application development.
 
----
+🚀 Features
+🔐 User Authentication
 
-## 🚀 Features
+User registration
 
-### ✔ Add Books  
-Add new books with **Book ID**, **Title**, and **Author**.
+Secure login system
 
-### ✔ View All Books  
-Displays all stored books along with their **availability status**.
+Passwords stored using hashing
 
-### ✔ Search Books  
-Search for books by **title** (case-insensitive).
+Different users can have independent borrow history
 
-### ✔ Borrow Books  
-Issue a book by its **Book ID**.  
-Books cannot be borrowed if already issued.
+📖 Book Management
 
-### ✔ Return Books  
-Return an issued book and update its availability.
+Add new books
 
-### ✔ Persistent Storage  
-All book data is saved in **`lib.txt`** using a simple `|` separated format.
+View all books
 
----
+Search books by title
 
-## 🗂 File Structure
+Track availability (Available / Issued)
 
-```
-project/
-│
-├── main.py        # Your source code
-├── lib.txt        # Auto-generated database file
-└── README.md      # Project documentation
-```
+📘 Borrow & Return System
 
-`lib.txt` will be created automatically when you add a book.
+Users can borrow available books
 
----
+Prevents issuing already-borrowed books
 
-## 🧩 How It Works
+Return previously borrowed books
 
-### Book Class (`B`)
-Represents each book with:
-- `bid` – Book ID  
-- `t` – Title  
-- `a` – Author  
-- `av` – Availability (True = Available)
+Automatic status updates
 
-### Library Class (`L`)
-Handles:
-- Loading/saving data  
-- Adding, viewing, searching  
-- Borrowing & returning  
-- Managing file operations  
+Shows messages such as:
 
----
+Book issued: <Book Title>
+Book returned: <Book Title>
 
-## ▶️ Running the Program
+🧾 Borrow History Tracking
 
-1. Make sure Python 3 is installed.
-2. Run:
+Each borrow action is logged with:
 
-```bash
-python main.py
-```
+User ID
 
-3. Choose options from the menu:
+Book ID
 
-```
-1. Add Book  
-2. View  
-3. Search  
-4. Borrow  
-5. Return  
-6. Exit
-```
+Borrow date/time
 
----
+Return date/time
 
-## 📄 Sample `lib.txt` Format
+This allows complete tracking of every user’s activity.
 
-```
-101|Python Basics|Guido Van Rossum|True
-102|C Programming|Dennis Ritchie|False
-```
+🗄 SQLite Database Integration
 
----
+SQLite ensures:
 
-## 🛠️ Technologies Used
+Persistent storage
 
-- **Python 3**
-- **File handling**
-- **Object-Oriented Programming (OOP)**
+Zero installation required
 
----
+Simple, portable .db file
 
-## 🎓 Purpose of the Project
+Works anywhere Python runs
 
-This project was created as part of the **FOCP (Fundamentals of Computing & Programming)** course to demonstrate:
+🛠 Technologies Used
+Component	Technology
+Programming Language	Python 3
+Database	SQLite3
+Authentication	Password hashing (SHA256)
+Coding Style	Object-Oriented Programming
+📂 Project Structure
+📦 Library-Management-System
+├── library.py           # Main program
+├── database.db          # SQLite database (auto-created)
+├── README.md            # Documentation
+└── requirements.txt      # (Optional) dependency list
 
-- Basic Python programming  
-- OOP concepts  
-- File I/O  
-- Simple data management  
+▶️ How to Run
+1. Clone the repository
+git clone https://github.com/<your-username>/Library-Management-System.git
+cd Library-Management-System
 
----
+2. Install dependencies (if used)
+pip install -r requirements.txt
 
-## 🤝 Contribution
+3. Run the program
+python library.py
 
-Feel free to fork the repo and improve the project!
 
----
+The SQLite database (library.db) will be created automatically on first run.
 
-## ⭐ If you like this project  
-Give it a ⭐ on GitHub!
+👥 User Flow
+🔹 Registration
+
+User creates an account with:
+
+Username
+
+Password
+
+Password is securely hashed before storing.
+
+🔹 Login
+
+User must log in to perform any actions:
+
+Borrow book
+
+Return book
+
+Search
+
+View books
+
+🔹 Borrowing a Book
+
+System checks if the book is available
+
+Assigns book to the logged-in user
+
+Updates borrow_history table
+
+🔹 Returning a Book
+
+Marks book as available
+
+Updates return timestamp
+
+Provides confirmation message
+
+🧪 Future Enhancements (Optional)
+
+Admin user role
+
+Email notifications
+
+GUI using Tkinter / PyQt
+
+REST API version
+
+Export reports (PDF/Excel)
+
+Fine calculation for late returns
+
+🤝 Contributions
+
+Pull requests are welcome!
+Feel free to open an issue for bug reports or feature suggestions.
+
+📜 License
+
+This project is released under the MIT License, allowing personal and commercial use.
+
+⭐ Support
+
+If you found this useful, consider giving the repository a star⭐ on GitHub.
